@@ -2112,12 +2112,12 @@ function useImperativeHandleIntercept<T, R extends T>(ref: React.Ref<T> | undefi
     return useImperativeHandleOrigin(ref, init, deps)
 }
 
-let useMemoOrigin: <T>(factory: () => T, deps: React.DependencyList | undefined) => T;
-export function useHookstateMemo<T>(factory: () => T, deps: React.DependencyList | undefined): T {
+let useMemoOrigin: <T>(factory: () => T, deps: React.DependencyList) => T;
+export function useHookstateMemo<T>(factory: () => T, deps: React.DependencyList): T {
     reconnectDependencies(deps)
     return useMemoOrigin(factory, deps)
 }
-function useMemoIntercept<T>(factory: () => T, deps: React.DependencyList | undefined): T {
+function useMemoIntercept<T>(factory: () => T, deps: React.DependencyList): T {
     reconnectDependencies(deps, true)
     return useMemoOrigin(factory, deps)
 }
