@@ -1058,6 +1058,9 @@ class Store implements Subscribable {
             return result;
         }
         path.forEach(p => {
+            if (result === undefined) {
+                return;
+            }
             result = result[p];
         });
         return result;
